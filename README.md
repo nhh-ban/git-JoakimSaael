@@ -6,7 +6,7 @@ This is the first assignment in BAN400. As you know -- given that you have come 
 
 **Name:** Joakim
 
-**Student number:** s231831
+**Student number:** s231831 TEST
 
 ## :information_source: Problem 1
 Update the personal information above.
