@@ -31,9 +31,16 @@ You can solve this problem in one of three ways depending on the level of your c
 
 You can, of course, move up and down this ladder of difficulty as you see fit yourself.
 
+Comment: MY ANSWER FOR PROBLEM 2 IS IN `galaxy_skeleton2.R`
+
 ## Problem 3
 
 The authors of the papers referenced above claim that their galaxy catalog is approximately complete because it is a *representative* sample of a particular volume in space (the ball of radius 11 megaparsecs centered on you and me). There are, however, some signs that the smaller objects are under-represented in the sample. Can you make a plot that reveals this tendency and a likely explanation?
+
+Comment: MY ANSWER FOR PROBLEM 3 IS IN `problem3.R` and my interpretation is below:
+
+Scatter plots of linear diameter against stellar mass, indicative mass, and hydrogen mass consistently revealed an underrepresentation of smaller galaxies. This suggests possible observational biases, sample selection biases, or physical processes affecting smaller galaxies in the surveyed region.
+
 
 ## Problem 4 (optional)
 

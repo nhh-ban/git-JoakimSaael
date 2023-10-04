@@ -1,4 +1,6 @@
 
+# PROBLEM 2
+
 # Skeleton file 2 for Assignment 1 in BAN400. 
 # -------------------------------------------
 
@@ -16,10 +18,11 @@ library(tidyverse)    # Contains most of what we need.
 # the file does not end with an "end of line"-character (EOL). This does not
 # seem to pose a problem later, and it seems that we can silece the warning by
 # switchin off the "warn"-argument. Do that if you wish.
-raw_file <- readLines(con = "?")
+raw_file <- readLines(con = "table.txt")
 
 # Identify the line number L of the separator line between the column names and
 # the rest of the data table.
+
 
 # Now every line in the file is in its separate element in the character vector
 # "raw_file". The next key step is to identify which line contains the separator
@@ -31,15 +34,12 @@ raw_file <- readLines(con = "?")
 
 # What do you need to replace the two question marks with in order to extract
 # the first two letters?
-substr(x = raw_file, start = ?, stop = ?)
+first_two_letters <- substr(x = raw_file, start = 1, stop = 2)
 
 # The next step is then to find out *which* line starts with "--", and pick out
 # the first one. This can be done in a nice little pipe, where you have to fill
 # out the question marks and the missing function names:
-L <- 
-  (substr(x = raw_file, start = ?, stop = ?) == "?") %>% 
-  function_that_returns_the_index_of_all_TRUES %>% 
-  function_that_picks_out_the_minimum_value
+L <- which(first_two_letters == "--")[1]
 
 # Save the variable descriptions (i.e. the information in lines 1:(L-2)) in a
 # text-file for future reference using the cat()-function. The first argument is
@@ -47,7 +47,7 @@ L <-
 # "raw_file"-vector on a separate line we also provide the sep-argument, where
 # we put the "end-of-line"-character "\n". We also need to come up with a file
 # name. Replace the question marks:
-cat(?, sep = "\n", file = "?")
+cat(raw_file[1:(L-2)], sep = "\n", file = "variable_descriptions.txt")
 
 # Extract the variable names (i.e. line (L-1)), store the names in a vector.
 
@@ -63,8 +63,7 @@ cat(?, sep = "\n", file = "?")
 # element out (check that!). We just unlist it to get out the vector. Then we
 # apply the str_trim()-function (also in the stringr-package) to get rid of all
 # the empty space. Replace the question mark below:
-variable_names <- 
-  str_split(string = ?, pattern = "\\|") %>% 
+variable_names <- str_split(string = raw_file[L-1], pattern = "\\|") %>% 
   unlist() %>% 
   str_trim()
 
@@ -78,8 +77,7 @@ variable_names <-
 # replace all "|" with "," and remove all empty space. The gsub-function is
 # super for this kind of search-and-replace. Replace the question mark below.
 
-comma_separated_values <- 
-  ? %>% 
+comma_separated_values <- raw_file[(L+1):length(raw_file)] %>%
   gsub("\\|", ",", .) %>% 
   gsub(" ", "", .)
 
@@ -87,20 +85,25 @@ comma_separated_values <-
 # cat()-the whole ting to a .csv-file in the same way as we did with the
 # variable descriptions above.
 
-comma_separated_values_with_names <- 
-  c(paste(variable_names, collapse = ","),
-    comma_separated_values)    
+comma_separated_values_with_names <- c(paste(variable_names, collapse = ","),
+                                       comma_separated_values)    
+
 
 # Replace the question mark and come up with a file name
-cat(?, sep = "\n", file = "?")
+cat(comma_separated_values_with_names, sep = "\n", file = "processed_data.csv")
 
 # Read the file back in as a normal csv-file. The readr-package is part of
 # tidyverse, so it is already loaded.
-galaxies <- read_csv("?")
-
+galaxies <- read_csv("processed_data.csv")
 
 # You should now have a nice, clean data frame with galaxies and their
 # characteristics in memory. As of March 2022 it should contain 796
 # observations.
+
+# PROBLEM 3
+
+# str(galaxies$a_26)
+
+hist(galaxies$a_26, main = "Distribution of Galaxy Diameter (kpc)", xlab = "Diameter (kpc)", breaks = 50, col = "blue")
 
 
