@@ -21,5 +21,3 @@
 # that vector to a single string with commas as separators).
 
 # Read the finished .csv back into R in the normal way.
-
-
